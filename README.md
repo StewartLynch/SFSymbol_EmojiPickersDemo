@@ -1,6 +1,6 @@
 # Emoji and SFSymbol Picker Packages
 
-![mac128](Images/mac128.png) This is the starter project for the video on the Emoji and SFSymbol Picker Packages
+![mac128](Images/mac128.png) This is the completed project for the video on the Emoji and SFSymbol Picker Packages
 
 Release Date: July 27, 2025
 
