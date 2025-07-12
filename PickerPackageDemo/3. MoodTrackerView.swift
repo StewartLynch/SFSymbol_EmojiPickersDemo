@@ -27,16 +27,32 @@ struct Mood: Identifiable {
 }
 
 import SwiftUI
+import EmojiPicker
 
 struct MoodTrackerView: View {
     @State private var mood = ""
-    let emoji = "😀"
+    @State private var emoji = "😀"
+    @State private var pickEmoji = false
     @State private var myMoods: [Mood] = []
     var body: some View {
         NavigationStack{
             HStack {
+                Button {
+                    pickEmoji.toggle()
+                } label: {
                     Text(emoji)
                         .font(.title)
+                }
+                .popover(
+                    isPresented: $pickEmoji,
+                    arrowEdge: .leading) {
+                        EmojiPickerView(
+                            selectedEmoji: $emoji,
+                            limitedCategories: [.smileysAndEmotion]
+                        )
+                        .frame(width: 300, height: 300)
+                        .presentationCompactAdaptation(.popover)
+                    }
                 TextField("How do you feel?", text: $mood)
                     .textFieldStyle(.roundedBorder)
                 Button("Record", systemImage: "plus.circle.fill") {
