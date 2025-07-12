@@ -37,9 +37,13 @@ class Folder: Identifiable {
 
 
 import SwiftUI
+import SFSymbolPicker
 
 struct MyFoldersView: View {
     @State private var myFolders = Folder.samples
+    private let loader = SymbolLoader()
+    @State private var showEdit = false
+    @State private var selectedFolder: Folder?
     var body: some View {
             NavigationStack {
                 List($myFolders, editActions: .delete) { $folder in
@@ -55,10 +59,16 @@ struct MyFoldersView: View {
                                 .font(.system(size: 30))
                                 .offset(y: 5)
                         }
+                        .onTapGesture {
+                            selectedFolder = folder
+                        }
                         TextField("name", text: $folder.name)
                             .font(.largeTitle)
                     }
                 }
+                .sheet(item: $selectedFolder, content: { folder in
+                    FolderStyleView(loader: loader, folder: folder)
+                })
                 .navigationTitle("My Folders")
                 .scrollBounceBehavior(.basedOnSize)
                 .toolbar {
