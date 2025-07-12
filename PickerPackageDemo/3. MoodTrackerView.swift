@@ -14,7 +14,8 @@
 //----------------------------------------------
 // Copyright © 2025 CreaTECH Solutions. All rights reserved.
 
-struct Mood {
+struct Mood: Identifiable {
+    var id = UUID()
     let date: Date = Date.now
     let emoji: String
     let mood: String
@@ -46,15 +47,26 @@ struct MoodTrackerView: View {
                 .disabled(mood.isEmpty)
             }
             .padding()
-            List(myMoods.sorted(using: KeyPathComparator(\.date, order: .reverse)), id: \.date) { status in
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(status.emoji)
-                            .font(.largeTitle)
-                        Text(status.mood)
+            List {
+                ForEach(myMoods.sorted(using: KeyPathComparator(\.date, order: .reverse))) { status in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(status.emoji)
+                                .font(.largeTitle)
+                            Text(status.mood)
+                        }
+                        Text(status.date, format: .dateTime)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    Text(status.date, format: .dateTime)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    .swipeActions {
+                        Button(role:.destructive) {
+                            if let index = myMoods.firstIndex(where: {$0.id == status.id}) {
+                                myMoods.remove(at: index)
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                    }
                 }
             }
             .listStyle(.plain)
