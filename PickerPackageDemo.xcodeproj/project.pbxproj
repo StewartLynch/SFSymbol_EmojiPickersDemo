@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BB9775A92E230327000A95E4 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BB9775A82E230327000A95E4 /* EmojiPicker */; };
+		BB9775AC2E23060A000A95E4 /* SFSymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BB9775AB2E23060A000A95E4 /* SFSymbolPicker */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BB056E332E1F324A002E0616 /* PickerPackageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerPackageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB9775A92E230327000A95E4 /* EmojiPicker in Frameworks */,
+				BB9775AC2E23060A000A95E4 /* SFSymbolPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = PickerPackageDemo;
 			packageProductDependencies = (
+				BB9775A82E230327000A95E4 /* EmojiPicker */,
+				BB9775AB2E23060A000A95E4 /* SFSymbolPicker */,
 			);
 			productName = PickerPackageDemo;
 			productReference = BB056E332E1F324A002E0616 /* PickerPackageDemo.app */;
@@ -95,6 +104,8 @@
 			mainGroup = BB056E2A2E1F324A002E0616;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				BB9775A72E230327000A95E4 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
+				BB9775AA2E23060A000A95E4 /* XCRemoteSwiftPackageReference "SFSymbolPicker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BB056E342E1F324A002E0616 /* Products */;
@@ -340,6 +351,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB9775A72E230327000A95E4 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StewartLynch/EmojiPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		BB9775AA2E23060A000A95E4 /* XCRemoteSwiftPackageReference "SFSymbolPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StewartLynch/SFSymbolPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB9775A82E230327000A95E4 /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB9775A72E230327000A95E4 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
+		};
+		BB9775AB2E23060A000A95E4 /* SFSymbolPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB9775AA2E23060A000A95E4 /* XCRemoteSwiftPackageReference "SFSymbolPicker" */;
+			productName = SFSymbolPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB056E2B2E1F324A002E0616 /* Project object */;
 }

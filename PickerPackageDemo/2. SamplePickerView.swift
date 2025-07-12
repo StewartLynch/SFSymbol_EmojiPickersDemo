@@ -15,22 +15,45 @@
 // Copyright © 2025 CreaTECH Solutions. All rights reserved.
 
 import SwiftUI
+import EmojiPicker
+import SFSymbolPicker
 
 struct SamplePickerView: View {
-   let myEmoji = "😀"
-   let symbol = "questionmark.circle.fill"
+    @State private var myEmoji = "😀"
+    @State private var pickEmoji = false
+    @State private var symbol = "questionmark.circle.fill"
+    @State private var pickSymbol = false
+    private var loader = SymbolLoader()
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text(myEmoji)
-                Image(systemName: symbol)
-                    .foregroundStyle(.red)
+                Button {
+                    pickEmoji.toggle()
+                } label: {
+                    Text(myEmoji)
+                }
+                Button {
+                    pickSymbol.toggle()
+                } label: {
+                    Image(systemName: symbol)
+                        .foregroundStyle(.red)
+                }
             }
             .font(.system(size: 100))
-            
             .padding()
             .navigationTitle("Sample Pickers")
+            .sheet(isPresented: $pickEmoji) {
+                EmojiPickerView(selectedEmoji: $myEmoji)
+            }
+            .sheet(isPresented: $pickSymbol) {
+                SymbolView(
+                    loader: loader,
+                    selectedSymbol: $symbol,
+                    limitedCategories: [.fitness, .communication]
+                )
+                .presentationDetents([.medium])
+            }
         }
     }
 }
