@@ -42,7 +42,6 @@ import SFSymbolPicker
 struct MyFoldersView: View {
     @State private var myFolders = Folder.samples
     private let loader = SymbolLoader()
-    @State private var showEdit = false
     @State private var selectedFolder: Folder?
     var body: some View {
             NavigationStack {
